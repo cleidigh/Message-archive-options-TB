@@ -1,14 +1,14 @@
 <!-- # ![MAO icon](src/chrome/skin/classic/message-archive-options-tb-32x32.png "Message Archive Options") Message Archive Options -->
 # Message Archive Options
-Message Archive Options is a Thunderbird Add-On that adds the ability to customise the date format
+Message Archive Options is a Thunderbird Add-On that adds the ability to customize the date format
 of the archive folders created by the Thunderbird Archive Message function.
 
 This add-on is the original work of Andrew Williamson and with his permission I will be updating
 the code for compatibility going forward and possible improvements.
 
-![MAO_version](https://img.shields.io/badge/version-v0.8.10-darkorange.png?label=Message%20Archive%20Options)
-![MAO_tb_version](https://img.shields.io/badge/version-v0.8.10-blue.png?label=Thunderbird%20Add-On)
-![Thunderbird_version](https://img.shields.io/badge/version-v5.0b2pre_--_5.*-blue.png?label=Thunderbird)
+![MAO_version](https://img.shields.io/badge/version-v5.0.0-darkorange.png?label=Message%20Archive%20Options)
+![MAO_tb_version](https://img.shields.io/badge/version-v5.0.0-blue.png?label=Thunderbird%20Add-On)
+![Thunderbird_version](https://img.shields.io/badge/version-v5.0b2pre_--_16.*-blue.png?label=Thunderbird)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-red.png)](https://opensource.org/licenses/MPL-2.0)
 #
 
