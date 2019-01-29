@@ -7,7 +7,7 @@ This add-on is the original work of Andrew Williamson and with his permission I 
 the code for compatibility going forward and possible improvements.
 
 ![MAO_version](https://img.shields.io/badge/version-v5.0.0-darkorange.png?label=Message%20Archive%20Options)
-![MAO_tb_version](https://img.shields.io/badge/version-v5.0.0-blue.png?label=Thunderbird%20Add-On)
+[![MAO_tb_version](https://img.shields.io/badge/version-v5.0.0-blue.png?label=Thunderbird%20Add-On)](https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=search)
 ![Thunderbird_version](https://img.shields.io/badge/version-v5.0b2pre_--_16.*-blue.png?label=Thunderbird)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-red.png)](https://opensource.org/licenses/MPL-2.0)
 #
