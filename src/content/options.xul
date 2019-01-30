@@ -36,6 +36,10 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!-- New CSS for TB 60.* -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+
 <!DOCTYPE prefwindow SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
 
 <prefwindow id="messagearchiveoptionsPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;">
