@@ -34,6 +34,9 @@
   - the terms of any one of the MPL, the GPL or the LGPL.
   - 
   - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+
 <!DOCTYPE overlay  SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd" >
 <overlay id="messagearchiveoptions-accountoverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
