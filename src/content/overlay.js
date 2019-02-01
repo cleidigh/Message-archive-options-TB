@@ -37,9 +37,11 @@
 var messagearchiveoptions = {
   preferenceService: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("extensions.messagearchiveoptions@eviljeff.com."),
 
-  get monthValue() {return this.preferenceService.getComplexValue("monthstring",Components.interfaces.nsISupportsString).toString();},
-  get yearValue()  {return this.preferenceService.getComplexValue("yearstring", Components.interfaces.nsISupportsString).toString();},
-  get keyModifiers() {
+	// cleidigh - use getStringPref for TB 60+
+	get monthValue() {return this.preferenceService.getStringPref("monthstring");},
+	get yearValue() {return this.preferenceService.getStringPref("yearstring");},
+
+	get keyModifiers() {
 	var modifiers=new Array();
 	if (this.preferenceService.getBoolPref("key.shift")) modifiers.push("shift");
 	if (this.preferenceService.getBoolPref("key.alt")) modifiers.push("alt");
@@ -47,14 +49,25 @@ var messagearchiveoptions = {
 	return modifiers;
   },
   onLoad: function() {
-    var origfunc=((BatchMessageMover.prototype.archiveSelectedMessages)? BatchMessageMover.prototype.archiveSelectedMessages : BatchMessageMover.prototype.archiveMessages).toSource(); //function name changed in TB3.1
-	origfunc=origfunc.replace('msgDate.toLocaleFormat("%Y-%m")','msgDate.toLocaleFormat(messagearchiveoptions.monthValue)');
-	origfunc=origfunc.replace('msgDate.getFullYear().toString()','msgDate.toLocaleFormat(messagearchiveoptions.yearValue)');
-	eval("BatchMessageMover.prototype.archive"+ ((BatchMessageMover.prototype.archiveSelectedMessages)? "Selected" : "") +"Messages = "+origfunc);
+	
+		let rg = /let monthFolderName =.*;$/gm
+
+		var origfunc=((BatchMessageMover.prototype.archiveSelectedMessages)? BatchMessageMover.prototype.archiveSelectedMessages : BatchMessageMover.prototype.archiveMessages).toSource(); //function name changed in TB3.1
+
+		// cleidigh - use strftime from @tdoan to replace deprecated toLocaleFormat in TB 60+
+		// origfunc=origfunc.replace('msgDate.toLocaleFormat("%Y-%m")','msgDate.toLocaleFormat(messagearchiveoptions.monthValue)');
+		// origfunc=origfunc.replace(rg, 'let monthFolderName = strftime(messagearchiveoptions.monthValue, msgDate).toString(); console.log(monthFolderName)');
+		origfunc=origfunc.replace(rg, 'let monthFolderName = strftime(messagearchiveoptions.monthValue, msgDate).toString();');
+
+		// origfunc=origfunc.replace('msgDate.getFullYear().toString()','msgDate.toLocaleDateString(locale, messagearchiveoptions.yearValue)');
+		origfunc=origfunc.replace('msgDate.getFullYear().toString()','strftime(messagearchiveoptions.yearValue, msgDate)');
+
+		eval("BatchMessageMover.prototype.archive"+ ((BatchMessageMover.prototype.archiveSelectedMessages)? "Selected" : "") +"Messages = "+origfunc);
 	//BatchMessageMover.prototype.archiveSelectedMessages = this.archiveSelectedMessages;
 	
 	this.migrateOldPrefs();
 	this.observe("","nsPref:changed","");
+
   }, 
   observe:function(subject ,topic , data) {
 	//Application.console.log("MessageArchiveOptions:observe");
@@ -70,5 +83,6 @@ var messagearchiveoptions = {
   }
 };
 
+// cleidigh - use nsIPrefBranch for TB 60+ 
 window.addEventListener("load", function(e) { messagearchiveoptions.onLoad(e); }, false);
-messagearchiveoptions.preferenceService.QueryInterface(Components.interfaces.nsIPrefBranch2).addObserver("key", messagearchiveoptions, false);
+messagearchiveoptions.preferenceService.QueryInterface(Components.interfaces.nsIPrefBranch).addObserver("key", messagearchiveoptions, false);
