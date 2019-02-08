@@ -1,0 +1,15 @@
+{
+  "title": "Message Archive Options",
+  "name": "message-archive-options-5.0.2-tb",
+  "version": "5.0.2",
+  "description": "Add additional local folders",
+  "main": "./content/overlay.js",
+  "author": "eviljeff, Christopher Leidigh",
+  "engines": {
+    "": ">=38.0a1"
+  },
+  "license": "MPLv-2.0",
+  "keywords": [
+    "jetpack"
+  ]
+}

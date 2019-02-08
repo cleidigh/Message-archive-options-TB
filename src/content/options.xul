@@ -36,10 +36,22 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!-- New CSS for TB 60.* -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+
 <!DOCTYPE prefwindow SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
 
-<prefwindow id="messagearchiveoptionsPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;">
-  <prefpane id="pane1" label="&pane1.title;" onpaneload="granualitySwitch()">
+<prefwindow
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  id="messagearchiveoptionsPreferences"
+  title="&prefwindow.title;"
+  onbeforeaccept = "return onDialogAccept();">
+
+  <script type="application/javascript" src="options.js"/>
+  <script type="application/javascript" src="strftime.js"/>
+
+  <prefpane id="pane1" label="&pane1.title;" onpaneload="granualitySwitch()" >
     <preferences>
       <preference id="pref_month" name="extensions.messagearchiveoptions@eviljeff.com.monthstring" type="unichar"/> 
 	  <preference id="pref_year" name="extensions.messagearchiveoptions@eviljeff.com.yearstring" type="unichar"/> 
@@ -48,22 +60,6 @@
 	  <preference id="pref_keyshift" name="extensions.messagearchiveoptions@eviljeff.com.key.shift" type="bool"/>
 	  <preference id="pref_keycontrol" name="extensions.messagearchiveoptions@eviljeff.com.key.control" type="bool"/>
     </preferences>
-	
-	<script>
-	<![CDATA[
-	function granualitySwitch() {
-	  var yearradio=document.getElementById('granuality1');
-	  var monthradio=document.getElementById('granuality2');
-	  var yearField=document.getElementById('year')
-	  var monthField=document.getElementById('month')
-	  
-	  if (monthradio.selected) monthField.removeAttribute("disabled"); 
-	  else monthField.setAttribute("disabled", "true"); 
-	  if (yearradio.selected || monthradio.selected) yearField.removeAttribute("disabled"); 
-	  else yearField.setAttribute("disabled", "true");  
-	}
-	]]>
-	</script>
 	
 	<groupbox>
 		<caption label="&granuality.label;"/>
@@ -85,4 +81,5 @@
 	</groupbox>
 	
   </prefpane>
+
 </prefwindow>
