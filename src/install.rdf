@@ -4,9 +4,8 @@
     <em:id>messagearchiveoptions@eviljeff.com</em:id>
     <em:name>Message Archive Options</em:name>
     <em:type>2</em:type>
-    <em:version>5.0.2-beta1</em:version>
-    <em:creator>eviljeff</em:creator>
-    <em:author>cleidigh</em:author>
+    <em:version>5.0.2</em:version>
+    <em:creator>eviljeff, Christopher Leidigh</em:creator>
     <em:description>Adds the ability to customize the date format of the archive folders created by TB's Archive Message function</em:description>
     <em:homepageURL>https://github.com/cleidigh/Message-archive-options-TB.git</em:homepageURL>
     <em:optionsURL>chrome://messagearchiveoptions/content/options.xul</em:optionsURL>

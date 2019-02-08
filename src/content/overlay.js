@@ -49,49 +49,31 @@ var messagearchiveoptions = {
 	return modifiers;
   },
   onLoad: function() {
-	
-		let rg = /let monthFolderName =.*;$/gm
 
+		// cleidigh - original approach modifies batch archive function to substitute
+		// complex date strings for folder names.  
+
+		// Modify year and month folder names
+		// cleidigh - use strftime from @tdoan to replace deprecated toLocaleFormat in TB 60+
+
+		let rg = /let monthFolderName =.*;$/gm
 		var origfunc=((BatchMessageMover.prototype.archiveSelectedMessages)? BatchMessageMover.prototype.archiveSelectedMessages : BatchMessageMover.prototype.archiveMessages).toSource(); //function name changed in TB3.1
 
-		
-		// cleidigh - use strftime from @tdoan to replace deprecated toLocaleFormat in TB 60+
-		// origfunc=origfunc.replace('msgDate.toLocaleFormat("%Y-%m")','msgDate.toLocaleFormat(messagearchiveoptions.monthValue)');
-		// origfunc=origfunc.replace(rg, 'let monthFolderName = strftime(messagearchiveoptions.monthValue, msgDate).toString(); console.log(monthFolderName)');
 		origfunc=origfunc.replace(rg, 'let monthFolderName = strftime(messagearchiveoptions.monthValue, msgDate).toString();');
 
-		// origfunc=origfunc.replace('msgDate.getFullYear().toString()','msgDate.toLocaleDateString(locale, messagearchiveoptions.yearValue)');
 		origfunc=origfunc.replace('msgDate.getFullYear().toString()','strftime(messagearchiveoptions.yearValue, msgDate)');
 
-		// origfunc=origfunc.replace('if (!aMsgHdrs.length)', 'console.log(aMsgHdrs.length);\n if (!aMsgHdrs.length)');
+		// Remove function declaration and function closure so anonymous function is not nested
+		// otherwise new function fails to work
 
 		rg = /^\s*\(\s*function\s*\(.+\)\s*\{/gm
 		origfunc=origfunc.replace(rg, '');
-		// origfunc=origfunc.replace('(function (aMsgHdrs) {', '');
-		// origfunc=origfunc.replace('})', '');
-
 		
 		rg = /\}.*\)\s*$/gm
 		origfunc=origfunc.replace(rg, '');
-		
-		console.log('after F*\n'+origfunc);
-		
-		// eval("BatchMessageMover.prototype.archive"+ ((BatchMessageMover.prototype.archiveSelectedMessages)? "Selected" : "") +"Messages = "+origfunc);
-		//BatchMessageMover.prototype.archiveSelectedMessages = this.archiveSelectedMessages;
 
-		// console.log(BatchMessageMover.prototype.archiveSelectedMessages)		
-		// console.log(BatchMessageMover.prototype.archiveMessages)	
-		// console.log(BatchMessageMover.prototype.archiveMessages.toSource())	
-		//  let s = ("BatchMessageMover.prototype.archive"+ ((BatchMessageMover.prototype.archiveSelectedMessages)? "Selected" : "") +"Messages = "+origfunc);
-		// console.log(origfunc);
-
-		// BatchMessageMover.prototype.archiveMessages = new Function('alert("hello")');
+		// Rework removing eval() and replacing with new Function()
 		BatchMessageMover.prototype.archiveMessages = new Function('aMsgHdrs',origfunc);
-		// eval(s)
-
-		console.log('after prototype')
-		console.log(BatchMessageMover.prototype.archiveMessages)	
-		console.log(BatchMessageMover.prototype.archiveMessages.toSource())	
 
 	this.migrateOldPrefs();
 	this.observe("","nsPref:changed","");
