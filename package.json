@@ -1,0 +1,27 @@
+{
+	"title": "Message Archive Options",
+	"name": "message-archive-options",
+	"version": "5.0.3-beta1",
+	"description": "Add additional local folders",
+	"main": "./content/overlay.js",
+	"author": "eviljeff, Christopher Leidigh",
+	"engines": {
+		"": ">=38.0a1"
+	},
+	"license": "GPLv3",
+	"config": {
+		"source_dir": "./src",
+		"target_dir": "./xpi",
+		"target_suffix": "-tb",
+		"target_extension": ".xpi",
+		"target_include_manifest": "true"
+	},
+	"scripts": {
+		"build-xpi-bat": ".\\scripts\\build-xpi.bat",
+		"build-xpi": "node ./scripts/build-xpi.js"
+	},
+	"keywords": [
+		"jetpack"
+	],
+	"dependencies": {}
+}
