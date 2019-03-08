@@ -1,0 +1,20 @@
+{
+	"manifest_version": 2,
+	"title": "Message Archive Options",
+	"name": "message-archive-options",
+	"version": "5.0.3-beta1",
+	"description": "Add additional local folders",
+	"author": "eviljeff, Christopher Leidigh",
+	"applications": {
+		"gecko": {
+			"id": "messagearchiveoptions@eviljeff.com",
+			"strict_max_version": "68.0"
+		}
+	},
+	"legacy": {
+		"options": {
+			"page": "chrome://messagearchiveoptions/content/options.xul",
+			"open_in_tab": false
+		}
+	}
+}
