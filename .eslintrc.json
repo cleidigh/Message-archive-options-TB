@@ -30,16 +30,6 @@
 		"Cu": "readonly",
 		"Ci": "readonly",
 		"Cr": "readonly",
-		"miczLogger": "readonly",
-		"miczColumnsWizardPrefsUtils": "readonly",
-		"Components": "readonly", 
-		"miczColumnsWizard": "readonly",
-		"miczColumnsWizard_CustCols": "readonly",
-		"miczColumnsWizard_MsgUtils": "readonly",
-		"miczColumnsWizardUtils": "readonly",
-		"miczColumnsWizard_CustomColsModUtils": "readonly",
-		"miczColumnsWizardPref_DefaultColsGrid": "readonly",
-		"miczColumnsWizardPref_CustomColsGrid": "readonly",
 
 		"messenger": "readonly",
 		"MailServices": "readonly",
@@ -47,13 +37,13 @@
 		"OS": "readonly",
 		"window": "readonly",
 		"msgWindow": "readonly",
-		"gFolderDisplay": "readonly"
+		"gFolderDisplay": "readonly",
+		"BatchMessageMover": "readonly"
 		
 	},
 	"rules": {
 		"no-irregular-whitespace": "error",
 		"space-in-parens": "error",
-	    // "no-unused-vars": [1, {"vars": "all", "args": "none", "varsIgnorePattern": "EXPORTED_SYMBOLS|rest"}],
 		"no-unused-vars":"off",
 		"space-before-function-paren":"off",
 		"no-array-constructor": "warn",

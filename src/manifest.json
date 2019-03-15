@@ -1,9 +1,8 @@
 {
 	"manifest_version": 2,
-	"title": "Message Archive Options",
 	"name": "message-archive-options",
 	"version": "5.0.3-beta1",
-	"description": "Add additional local folders",
+	"description": "Adds the ability to customize the date format of the archive folders created by TB's Archive Message function",
 	"author": "eviljeff, Christopher Leidigh",
 	"applications": {
 		"gecko": {
