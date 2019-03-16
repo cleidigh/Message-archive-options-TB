@@ -3,6 +3,7 @@
 ## Versions
 
 5.0.3	- Update for TB60 - March 16, 2019
+		- New Icon !
 		- Reformat code
 		- Update repository
 		- Use new build scripts
