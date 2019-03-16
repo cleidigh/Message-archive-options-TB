@@ -1,10 +1,17 @@
 # Message Archive Options Changelog
 
 ## Versions
-5.0.0	- Last version by Andrew Williamson - Compatible with Thunderbird 5.0b2pre-16.*
 
-5.0.2	- Update for new TB60.* requirements, January 2019
+5.0.3	- Update for TB60 - March 16, 2019
+		- Reformat code
+		- Update repository
+		- Use new build scripts
+
+5.0.2	- Update for new TB60.* requirements - unreleased version
 		- Bump Max version in install.rdf
 		- Add me as new additional author
 		- Add new preferences CSS
 		- Remove eval() use
+
+5.0.0	- Last version by Andrew Williamson - Compatible with Thunderbird 5.0b2pre-16.*
+
