@@ -53,7 +53,7 @@ if (fs.existsSync(`${targetDir}/${targetName}`)) {
 
 const installRDFVersion = xml_util.rdfGetValue(`${sourceDir}/install.rdf`, 'Description[\"em:version\"]');
 const manifestVersion = loadJsonFile.sync(`${sourceDir}/manifest.json`).version;
-const manifestName = loadJsonFile.sync(`${sourceDir}/manifest.json`).name;
+const manifestName = loadJsonFile.sync(`${sourceDir}/manifest.json`)["xpi-name"];
 const ignoreFile = (includeManifest ? null : `-x!${sourceDir}/manifest.json`);
 
 const extraFiles = ['LICENSE', 'CHANGELOG.md'];

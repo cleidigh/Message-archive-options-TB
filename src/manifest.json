@@ -1,6 +1,7 @@
 {
 	"manifest_version": 2,
-	"name": "message-archive-options",
+	"name": "Message Archive Options",
+	"xpi-name": "message-archive-options",
 	"version": "5.0.3-beta1",
 	"description": "Adds the ability to customize the date format of the archive folders created by TB's Archive Message function",
 	"author": "eviljeff, Christopher Leidigh",

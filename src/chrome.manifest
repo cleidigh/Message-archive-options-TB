@@ -1,6 +1,7 @@
 content	messagearchiveoptions	content/
 locale	messagearchiveoptions	en-US	locale/en-US/
 skin	messagearchiveoptions	classic/1.0	skin/
+skin	messagearchiveoptions	default		chrome/skin/
 overlay	chrome://messenger/content/messenger.xul	chrome://messagearchiveoptions/content/thunderbirdOverlay.xul
 overlay	chrome://messenger/content/am-archiveoptions.xul	chrome://messagearchiveoptions/content/tbArchiveOptionsOverlay.xul
 overlay	chrome://messenger/content/am-copies.xul	chrome://messagearchiveoptions/content/accountOverlay.xul
