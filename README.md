@@ -6,9 +6,9 @@ of the archive folders created by the Thunderbird Archive Message function.
 This add-on is the original work of Andrew Williamson and with his permission I will be updating
 the code for compatibility going forward and possible improvements.
 
-![MAO_version](https://img.shields.io/badge/version-v5.0.2-darkorange.png?label=Message%20Archive%20Options)
-[![MAO_tb_version](https://img.shields.io/badge/version-v5.0.2-blue.png?label=Thunderbird%20Add-On)](https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=search)
-![Thunderbird_version](https://img.shields.io/badge/version-v58--60.*-blue.png?label=Thunderbird)
+![MAO_version](https://img.shields.io/badge/version-v5.0.3-darkorange.png?label=Message%20Archive%20Options)
+[![MAO_tb_version](https://img.shields.io/badge/version-v5.0.3-blue.png?label=Thunderbird%20Add-On)](https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=search)
+![Thunderbird_version](https://img.shields.io/badge/version-v60.0--60.*-blue.png?label=Thunderbird)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-red.png)](https://opensource.org/licenses/MPL-2.0)
 #
 
