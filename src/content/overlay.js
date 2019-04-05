@@ -1,3 +1,5 @@
+const { strftime } = ChromeUtils.import("chrome://messagearchiveoptions/content/strftime.js");
+console.error('Overland load 8 ** ' + strftime.strftime('%Y %b'));
 
 console.log("overlay 2");
 
