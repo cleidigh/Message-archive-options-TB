@@ -42,7 +42,7 @@
 
 <!DOCTYPE prefwindow SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
 
-<prefwindow
+<dialog
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   id="messagearchiveoptionsPreferences"
   title="&prefwindow.title;"
@@ -82,4 +82,4 @@
 	
   </prefpane>
 
-</prefwindow>
+</dialog>
