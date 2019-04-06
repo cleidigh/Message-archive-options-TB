@@ -40,46 +40,40 @@
 <!-- New CSS for TB 60.* -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
+<!DOCTYPE dialog SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
 
 <dialog
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   id="messagearchiveoptionsPreferences"
   title="&prefwindow.title;"
-  onbeforeaccept = "return onDialogAccept();">
+  type="child"
+  flex="1" 
+  onbeforeeaccept = "return onDialogAccept();">
 
-  <script type="application/javascript" src="options.js"/>
-  <script type="application/javascript" src="strftime.js"/>
-
-  <prefpane id="pane1" label="&pane1.title;" onpaneload="granualitySwitch()" >
-    <preferences>
-      <preference id="pref_month" name="extensions.messagearchiveoptions@eviljeff.com.monthstring" type="unichar"/> 
-	  <preference id="pref_year" name="extensions.messagearchiveoptions@eviljeff.com.yearstring" type="unichar"/> 
-	  <preference id="pref_granuality" name="mail.identity.default.archive_granularity" type="int"/>
-	  <preference id="pref_keyalt" name="extensions.messagearchiveoptions@eviljeff.com.key.alt" type="bool"/> 
-	  <preference id="pref_keyshift" name="extensions.messagearchiveoptions@eviljeff.com.key.shift" type="bool"/>
-	  <preference id="pref_keycontrol" name="extensions.messagearchiveoptions@eviljeff.com.key.control" type="bool"/>
-    </preferences>
-	
+  
+	<prefpane>
 	<groupbox>
 		<caption label="&granuality.label;"/>
-		<radiogroup id="granuality" preference="pref_granuality">
+		<radiogroup id="granuality" preference="mail.identity.default.archive_granularity">
 		    <radio id="granuality0" value="0" label="&granuality.level0.label;" oncommand="granualitySwitch();"/>
 		    <radio id="granuality1" value="1" label="&granuality.level1.label;" oncommand="granualitySwitch();"/>
-			<label accesskey="&year.accesskey;" control="year">&year.label;</label><textbox id="year" preference="pref_year"/>
+			<label accesskey="&year.accesskey;" control="year">&year.label;</label><textbox id="year" preference="extensions.messagearchiveoptions@eviljeff.com.yearstring"/>
 		    <radio id="granuality2" value="2" label="&granuality.level2.label;" oncommand="granualitySwitch();"/>
-			<label accesskey="&month.accesskey;" control="month">&month.label;</label><textbox id="month" preference="pref_month"/>
+			<label accesskey="&month.accesskey;" control="month">&month.label;</label><textbox id="month" preference="extensions.messagearchiveoptions@eviljeff.com.monthstring"/>
 		</radiogroup>
 	</groupbox>
 	<label value="&dateformatref.label;" class="text-link" href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html"/>
 	<groupbox>
 	<caption label="&key.label;" />
-	  <checkbox label="&key.alt.label;" preference="pref_keyalt" />
-	  <checkbox label="&key.shift.label;" preference="pref_keyshift" />
-	  <checkbox label="&key.control.label;" preference="pref_keycontrol" />
+	  <checkbox label="&key.alt.label;" preference="extensions.messagearchiveoptions@eviljeff.com.key.alt" />
+	  <checkbox label="&key.shift.label;" preference="extensions.messagearchiveoptions@eviljeff.com.key.shift" />
+	  <checkbox label="&key.control.label;" preference="extensions.messagearchiveoptions@eviljeff.com.key.control" />
 	  <label value="&key.restarttext;" style="font-weight:bold"/>
 	</groupbox>
 	
-  </prefpane>
+</prefpane>
+
+<script type="application/javascript" src="chrome://global/content/preferencesBindings.js"/> 
+<script type="application/javascript" src="options.js"/>
 
 </dialog>
