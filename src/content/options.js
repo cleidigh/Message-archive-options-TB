@@ -2,11 +2,6 @@
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 const { strftime } = ChromeUtils.import("chrome://messagearchiveoptions/content/strftime.js");
 
-var currentPrefs = [];
-
-// var returnValues = window.arguments[0];
-
-console.log("options load");
 Preferences.addAll([
 	{ id: "extensions.messagearchiveoptions@eviljeff.com.monthstring", type: "unichar" },
 	{ id: "extensions.messagearchiveoptions@eviljeff.com.yearstring", type: "unichar" },
@@ -16,10 +11,6 @@ Preferences.addAll([
 	{ id: "extensions.messagearchiveoptions@eviljeff.com.key.control", type: "bool" },
 ]);
 
-for (let element of document.querySelectorAll('[id]')) {
-	window[element.id] = element;
-}
-
 
 function granualitySwitch() {
 	var yearradio = document.getElementById('granuality1');
@@ -27,16 +18,28 @@ function granualitySwitch() {
 	var yearField = document.getElementById('year');
 	var monthField = document.getElementById('month');
 
-
-	console.log("granularity " + yearField);
 	if (monthradio.selected) monthField.removeAttribute("disabled");
 	else monthField.setAttribute("disabled", "true");
 	if (yearradio.selected || monthradio.selected) yearField.removeAttribute("disabled");
 	else yearField.setAttribute("disabled", "true");
 }
 
+function strftimeReferenceLoad() {
+	let tabmail = getMail3Pane();
+	const ref = "https://thdoan.github.io/strftime/";
+	tabmail.openTab("chromeTab", { chromePage: ref });
+}
+
+function getMail3Pane() {
+	var w = Cc["@mozilla.org/appshell/window-mediator;1"]
+		.getService(Ci.nsIWindowMediator)
+		.getMostRecentWindow("mail:3pane");
+	return w;
+}
+
+
 function onDialogAccept(e) {
-	console.log("accept hours");
+	console.log("onDialogAccept ");
 	console.log(Preferences.getAll());
 	var yearField = document.getElementById('year').value;
 	var monthField = document.getElementById('month').value;
@@ -48,18 +51,17 @@ function onDialogAccept(e) {
 	if (illegalChars.test(mFolder)) {
 		Services.prompt.alert(window, 'Option Error', 'Illegal Month Foldername: ' + mFolder);
 
-		console.log("accept "+mFolder);
+		console.log("accept " + mFolder);
 		e.preventDefault();
-
+		e.stopPropagation();
 		return false;
 	}
 
 	if (illegalChars.test(yFolder)) {
 		Services.prompt.alert('Option Error', 'Illegal Year Foldername: ' + mFolder);
-		// alert('Illegal Year Foldername: ' + yFolder);
-		console.log("accept "+yFolder);
-		// e.preventDefault();
-
+		console.log("accept " + yFolder);
+		e.preventDefault();
+		e.stopPropagation();
 		return false;
 	}
 
@@ -72,34 +74,18 @@ function onDialogCancel() {
 }
 
 function onLoad(e) {
-	currentPrefs = Preferences.getAll();
 	granualitySwitch();
 }
 
-document.addEventListener('dialogaccept', function(e) {
+document.addEventListener('dialogaccept', function (e) {
+	Services.console.logStringMessage(" dialogaccept event handler");
 	onDialogAccept(e);
-	// returnValues.cancelDialog = false;
 	return false;
 });
-// document.addEventListener('dialogcancel', onDialogCancel());
-document.addEventListener('dialogcancel', function(e) {
-	let preferenceService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.messagearchiveoptions@eviljeff.com.");
 
-	console.log("dialogue cancel ");
-	// Preferences.addAll(currentPrefs);
-	console.log(Preferences.getAll()[0].value);
-	console.log(currentPrefs[0].value);
-	var yearField = document.getElementById('year');
-	var monthField = document.getElementById('month');
-	// yearField.value = currentPrefs[1].value;
-	// monthField.value = currentPrefs[0].value;
-	// preferenceService.setStringPref("monthstring", currentPrefs[0].value);
-	// preferenceService.setStringPref("yearstring", currentPrefs[1]._value);
-	// console.log(Preferences.getAll());
-
-	// returnValues.cancelDialog = true;
+document.addEventListener('dialogcancel', function (e) {
+	Services.console.logStringMessage("dialogcancel event handler");
 	return true;
 });
 
-// window.addEventListener("load", onLoad(), false);
 window.addEventListener("load", function (e) { onLoad(e); }, false);
