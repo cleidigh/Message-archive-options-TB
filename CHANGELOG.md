@@ -2,6 +2,18 @@
 
 ## Versions
 
+5.0.3	- Update for TB68/New Locales - April 15, 2019
+		- Updated against TB68-Beta
+		- Continues to work with TB60
+		- Improved UI
+		- Added multiple locales:
+			- Greek (el)
+			- German (de)
+			- French (fr)
+			- Italian (it)
+			- Hungarian (hu)
+			- Spanish (es-ES)
+
 5.0.3	- Update for TB60 - March 16, 2019
 		- New Icon !
 		- Reformat code

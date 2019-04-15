@@ -5,6 +5,7 @@ locale	messagearchiveoptions	fr 		locale/fr/
 locale	messagearchiveoptions	el		locale/el/
 locale	messagearchiveoptions	hu		locale/hu/
 locale	messagearchiveoptions	es-ES	locale/es-ES/
+locale	messagearchiveoptions	it		locale/it/
 
 skin	messagearchiveoptions	default		chrome/skin/
 skin	messagearchiveoptions	classic/1.0	skin/
