@@ -39,8 +39,8 @@ function getMail3Pane() {
 
 
 function onDialogAccept(e) {
-	console.log("onDialogAccept ");
-	console.log(Preferences.getAll());
+	const promptStrings = Services.strings.createBundle("chrome://messagearchiveoptions/locale/messagearchiveoptions.properties");
+
 	var yearField = document.getElementById('year').value;
 	var monthField = document.getElementById('month').value;
 	const mFolder = strftime.strftime(monthField);
@@ -48,18 +48,19 @@ function onDialogAccept(e) {
 
 	let illegalChars = /[^a-z0-9_()-\s]/gi;
 
-	if (illegalChars.test(mFolder)) {
-		Services.prompt.alert(window, 'Option Error', 'Illegal Month Foldername: ' + mFolder);
+	const promptTitle = promptStrings.GetStringFromName("extensions.messagearchiveoptions.prompttitle.formaterror");
 
-		console.log("accept " + mFolder);
+	if (illegalChars.test(mFolder)) {
+		const promptError = promptStrings.GetStringFromName("extensions.messagearchiveoptions.prompt.illegalmonthformat");
+		Services.prompt.alert(window, promptTitle, promptError + ':  ' + monthField);
 		e.preventDefault();
 		e.stopPropagation();
 		return false;
 	}
 
 	if (illegalChars.test(yFolder)) {
-		Services.prompt.alert('Option Error', 'Illegal Year Foldername: ' + mFolder);
-		console.log("accept " + yFolder);
+		const promptError = promptStrings.GetStringFromName("extensions.messagearchiveoptions.prompt.illegalyearformat");
+		Services.prompt.alert(window, promptTitle, promptError + ':  ' + yearField);
 		e.preventDefault();
 		e.stopPropagation();
 		return false;
@@ -68,23 +69,16 @@ function onDialogAccept(e) {
 	return true;
 }
 
-function onDialogCancel() {
-	console.log("dialogue cancel Mine ");
-	console.log(Preferences.getAll());
-}
-
 function onLoad(e) {
 	granualitySwitch();
 }
 
 document.addEventListener('dialogaccept', function (e) {
-	Services.console.logStringMessage(" dialogaccept event handler");
 	onDialogAccept(e);
 	return false;
 });
 
 document.addEventListener('dialogcancel', function (e) {
-	Services.console.logStringMessage("dialogcancel event handler");
 	return true;
 });
 

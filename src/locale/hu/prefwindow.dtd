@@ -11,6 +11,6 @@
 <! ENTITY key.alt.label "Alt vagy Opció">
 <! ENTITY key.shift.label "Shift">
 <! ENTITY key.control.label "Vezérlés vagy parancs">
-<! ENTITY dateformatref.label "Dátumformátum hivatkozás (thdoan)">
-<! ENTITY fiókgomb "Alapértelmezett archív beállítások ...">
+<! ENTITY dateformatref.label "Dátumformátum hivatkozás">
+<! ENTITY fiókgomb "Alapértelmezett archív beállítások…">
 <! ENTITY key.restarttext "A módosítók módosítása újraindítást igényel">

@@ -11,6 +11,6 @@
 <! ENTITY key.alt.label "Alt ou Option">
 <! ENTITY key.shift.label "Shift">
 <! ENTITY key.control.label "Contrôle ou commande">
-<! ENTITY dateformatref.label "Référence du format de date (thdoan)">
+<! ENTITY dateformatref.label "Référence du format de date">
 <! ENTITY accountbutton "Options d'archivage par défaut ...">
 <! ENTITY key.restarttext "Le changement de modificateur nécessite un redémarrage">

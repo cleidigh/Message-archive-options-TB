@@ -11,6 +11,6 @@
 <! ENTITY key.alt.label "Alt oder Option">
 <! ENTITY key.shift.label "Shift">
 <! ENTITY key.control.label "Control oder Command">
-<! ENTITY dateformatref.label "Datumsformatreferenz (thdoan)">
-<! ENTITY Konto-Schaltfläche "Standard-Archivoptionen ...">
+<! ENTITY dateformatref.label "Datumsformatreferenz">
+<! ENTITY Konto-Schaltfläche "Standard-Archivoptionen…">
 <! ENTITY key.restarttext "Ändern von Modifizierern erfordert Neustart">
