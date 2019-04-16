@@ -46,8 +46,6 @@
   id="messagearchiveoptionsPreferences" title="&prefwindow.title;" flex="1"
   onbeforeaccept="return onbeforeaccept()">
 
-
-
   <vbox>
     <html:fieldset>
       <html:legend>&granuality.label;</html:legend>

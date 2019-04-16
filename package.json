@@ -1,7 +1,7 @@
 {
 	"title": "Message Archive Options",
 	"name": "message-archive-options",
-	"version": "5.0.4-beta2",
+	"version": "5.1.0",
 	"description": "Add additional local folders",
 	"main": "./content/overlay.js",
 	"author": "eviljeff, Christopher Leidigh",

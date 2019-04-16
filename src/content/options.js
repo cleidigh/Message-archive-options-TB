@@ -2,6 +2,7 @@
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 const { strftime } = ChromeUtils.import("chrome://messagearchiveoptions/content/strftime.js");
 
+// For TB68 the dialog needs to be of type child to not use instantApply  
 const dialog = document.getElementById("messagearchiveoptionsPreferences");
 const versionChecker = Services.vc;
 const currentVersion = Services.appinfo.platformVersion;
@@ -9,8 +10,6 @@ const currentVersion = Services.appinfo.platformVersion;
 if (versionChecker.compare(currentVersion, "61") >= 0) {
 	dialog.setAttribute("type", "child");
 }
-
-// dialog.setAttribute("onbeforeaccept", "return onbeforeaccept()");
 
 Preferences.addAll([
 	{ id: "extensions.messagearchiveoptions@eviljeff.com.monthstring", type: "unichar" },
@@ -23,7 +22,6 @@ Preferences.addAll([
 
 
 function granualitySwitch() {
-	// Preferences.type = "child";
 	var yearradio = document.getElementById('granuality1');
 	var monthradio = document.getElementById('granuality2');
 	var yearField = document.getElementById('year');
@@ -64,16 +62,20 @@ function onDialogAccept(e) {
 	if (illegalChars.test(mFolder)) {
 		const promptError = promptStrings.GetStringFromName("extensions.messagearchiveoptions.prompt.illegalmonthformat");
 		Services.prompt.alert(window, promptTitle, promptError + ':  ' + monthField);
-		e.preventDefault();
-		e.stopPropagation();
+		if (!!e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
 		return false;
 	}
 
 	if (illegalChars.test(yFolder)) {
 		const promptError = promptStrings.GetStringFromName("extensions.messagearchiveoptions.prompt.illegalyearformat");
 		Services.prompt.alert(window, promptTitle, promptError + ':  ' + yearField);
-		e.preventDefault();
-		e.stopPropagation();
+		if (!!e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
 		return false;
 	}
 
@@ -84,22 +86,12 @@ function onLoad(e) {
 	granualitySwitch();
 }
 
-
-// document.addEventListener('dialogaccept', function (e) {
-// 	onDialogAccept(e);
-// 	return false;
-// });
-
-
 function onbeforeaccept(e) {
-	Services.console.logStringMessage("before except");
+	// Services.console.logStringMessage("before except");
 	return onDialogAccept(e);
 }
 
 document.addEventListener('dialogcancel', function (e) {
-	// e.preventDefault();
-	// e.stopPropagation();
-
 	return true;
 });
 
