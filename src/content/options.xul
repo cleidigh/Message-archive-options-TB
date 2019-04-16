@@ -40,46 +40,62 @@
 <!-- New CSS for TB 60.* -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
+<!DOCTYPE dialog SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
 
-<prefwindow
-  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-  id="messagearchiveoptionsPreferences"
-  title="&prefwindow.title;"
-  onbeforeaccept = "return onDialogAccept();">
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml"
+  id="messagearchiveoptionsPreferences" title="&prefwindow.title;" flex="1"
+  onbeforeaccept="return onbeforeaccept()">
 
+  <vbox>
+    <html:fieldset>
+      <html:legend>&granuality.label;</html:legend>
+      <vbox>
+        <hbox>
+          <radiogroup id="granuality" preference="mail.identity.default.archive_granularity">
+            <radio id="granuality0" value="0" label="&granuality.level0.label;" oncommand="granualitySwitch();" />
+            <radio id="granuality1" value="1" label="&granuality.level1.label;" oncommand="granualitySwitch();" />
+            <radio id="granuality2" value="2" label="&granuality.level2.label;" oncommand="granualitySwitch();" />
+          </radiogroup>
+          <hbox flex="0" width="40px"></hbox>
+          <hbox flex="0">
+            <image src="chrome://messagearchiveoptions/skin/mao-icon-64px.png" width="48px" height="48px"
+              maxwidth="48px" maxheight="48px" />
+          </hbox>
+        </hbox>
+        <hbox flex="0" height="14px"></hbox>
+        <hbox>
+          <hbox flex="1" width="64px"><label accesskey="&year.accesskey;" control="year">&year.label;</label></hbox>
+          <hbox>
+            <textbox id="year" preference="extensions.messagearchiveoptions@eviljeff.com.yearstring" />
+          </hbox>
+        </hbox>
+        <hbox>
+          <hbox flex="1" width="64px"><label accesskey="&month.accesskey;" control="month">&month.label;</label></hbox>
+          <hbox>
+            <textbox id="month" preference="extensions.messagearchiveoptions@eviljeff.com.monthstring" />
+          </hbox>
+        </hbox>
+        <hbox flex="0" style="margin-left: 5px">
+          <image src="chrome://messagearchiveoptions/skin/question-mark-20px.png" width="16px" height="16px"
+            maxwidth="16px" maxheight="16px" onclick="strftimeReferenceLoad()" />
+          <label value="&dateformatref.label;" class="text-link" onclick="strftimeReferenceLoad()" />
+        </hbox>
+      </vbox>
+    </html:fieldset>
+
+    <vbox flex="0" height="6px"></vbox>
+    <html:fieldset>
+      <html:legend>&key.label;</html:legend>
+      <vbox>
+        <checkbox label="&key.alt.label;" preference="extensions.messagearchiveoptions@eviljeff.com.key.alt" />
+        <checkbox label="&key.shift.label;" preference="extensions.messagearchiveoptions@eviljeff.com.key.shift" />
+        <checkbox label="&key.control.label;" preference="extensions.messagearchiveoptions@eviljeff.com.key.control" />
+        <label value="&key.restarttext;" style="font-weight:bold" />
+      </vbox>
+
+    </html:fieldset>
+  </vbox>
+  <script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
   <script type="application/javascript" src="options.js"/>
-  <script type="application/javascript" src="strftime.js"/>
 
-  <prefpane id="pane1" label="&pane1.title;" onpaneload="granualitySwitch()" >
-    <preferences>
-      <preference id="pref_month" name="extensions.messagearchiveoptions@eviljeff.com.monthstring" type="unichar"/> 
-	  <preference id="pref_year" name="extensions.messagearchiveoptions@eviljeff.com.yearstring" type="unichar"/> 
-	  <preference id="pref_granuality" name="mail.identity.default.archive_granularity" type="int"/>
-	  <preference id="pref_keyalt" name="extensions.messagearchiveoptions@eviljeff.com.key.alt" type="bool"/> 
-	  <preference id="pref_keyshift" name="extensions.messagearchiveoptions@eviljeff.com.key.shift" type="bool"/>
-	  <preference id="pref_keycontrol" name="extensions.messagearchiveoptions@eviljeff.com.key.control" type="bool"/>
-    </preferences>
-	
-	<groupbox>
-		<caption label="&granuality.label;"/>
-		<radiogroup id="granuality" preference="pref_granuality">
-		    <radio id="granuality0" value="0" label="&granuality.level0.label;" oncommand="granualitySwitch();"/>
-		    <radio id="granuality1" value="1" label="&granuality.level1.label;" oncommand="granualitySwitch();"/>
-			<label accesskey="&year.accesskey;" control="year">&year.label;</label><textbox id="year" preference="pref_year"/>
-		    <radio id="granuality2" value="2" label="&granuality.level2.label;" oncommand="granualitySwitch();"/>
-			<label accesskey="&month.accesskey;" control="month">&month.label;</label><textbox id="month" preference="pref_month"/>
-		</radiogroup>
-	</groupbox>
-	<label value="&dateformatref.label;" class="text-link" href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html"/>
-	<groupbox>
-	<caption label="&key.label;" />
-	  <checkbox label="&key.alt.label;" preference="pref_keyalt" />
-	  <checkbox label="&key.shift.label;" preference="pref_keyshift" />
-	  <checkbox label="&key.control.label;" preference="pref_keycontrol" />
-	  <label value="&key.restarttext;" style="font-weight:bold"/>
-	</groupbox>
-	
-  </prefpane>
-
-</prefwindow>
+</dialog>
