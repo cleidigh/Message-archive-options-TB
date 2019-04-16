@@ -2,6 +2,16 @@
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 const { strftime } = ChromeUtils.import("chrome://messagearchiveoptions/content/strftime.js");
 
+const dialog = document.getElementById("messagearchiveoptionsPreferences");
+const versionChecker = Services.vc;
+const currentVersion = Services.appinfo.platformVersion;
+
+if (versionChecker.compare(currentVersion, "61") >= 0) {
+	dialog.setAttribute("type", "child");
+}
+
+// dialog.setAttribute("onbeforeaccept", "return onbeforeaccept()");
+
 Preferences.addAll([
 	{ id: "extensions.messagearchiveoptions@eviljeff.com.monthstring", type: "unichar" },
 	{ id: "extensions.messagearchiveoptions@eviljeff.com.yearstring", type: "unichar" },
@@ -13,6 +23,7 @@ Preferences.addAll([
 
 
 function granualitySwitch() {
+	// Preferences.type = "child";
 	var yearradio = document.getElementById('granuality1');
 	var monthradio = document.getElementById('granuality2');
 	var yearField = document.getElementById('year');
@@ -73,12 +84,22 @@ function onLoad(e) {
 	granualitySwitch();
 }
 
-document.addEventListener('dialogaccept', function (e) {
-	onDialogAccept(e);
-	return false;
-});
+
+// document.addEventListener('dialogaccept', function (e) {
+// 	onDialogAccept(e);
+// 	return false;
+// });
+
+
+function onbeforeaccept(e) {
+	Services.console.logStringMessage("before except");
+	return onDialogAccept(e);
+}
 
 document.addEventListener('dialogcancel', function (e) {
+	// e.preventDefault();
+	// e.stopPropagation();
+
 	return true;
 });
 

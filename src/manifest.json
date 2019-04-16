@@ -2,12 +2,9 @@
 	"manifest_version": 2,
 	"name": "__MSG_extensionName__",
 	"description": "__MSG_extensionDescription__",
-  
-	"name": "Message Archive Options",
 	"xpi-name": "message-archive-options",
 	"version": "5.0.4-beta2",
 	"author": "eviljeff, Christopher Leidigh",
-	"developer": "eviljeff, Christopher Leidigh",
 	"applications": {
 		"gecko": {
 			"id": "messagearchiveoptions@eviljeff.com"
@@ -18,5 +15,6 @@
 			"page": "chrome://messagearchiveoptions/content/options.xul",
 			"open_in_tab": false
 		}
-	}
+	},
+	"default_locale": "en_US"
 }

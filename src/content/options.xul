@@ -43,7 +43,10 @@
 <!DOCTYPE dialog SYSTEM "chrome://messagearchiveoptions/locale/prefwindow.dtd">
 
 <dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml"
-  id="messagearchiveoptionsPreferences" title="&prefwindow.title;" type="child" flex="1">
+  id="messagearchiveoptionsPreferences" title="&prefwindow.title;" flex="1"
+  onbeforeaccept="return onbeforeaccept()">
+
+
 
   <vbox>
     <html:fieldset>
