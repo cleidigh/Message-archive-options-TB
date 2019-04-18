@@ -37,6 +37,5 @@
 
 <overlay id="messagearchiveoptions-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <!-- <script type="application/javascript" src="strftime.js"/> -->
   <script type="application/javascript" src="overlay.js"/>
 </overlay>

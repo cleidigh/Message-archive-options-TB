@@ -23,7 +23,7 @@ var messagearchiveoptions = {
 		// Modify year and month folder names
 		// cleidigh - use strftime from @tdoan to replace deprecated toLocaleFormat in TB 60+
 
-		BatchMessageMover.prototype.archiveMessages = messagearchiveoptions.archiveMessagesOverride;
+		MessageArchiver.prototype.archiveMessages = messagearchiveoptions.archiveMessagesOverride;
 
 		this.migrateOldPrefs();
 		this.observe("", "nsPref:changed", "");
@@ -47,9 +47,9 @@ var messagearchiveoptions = {
 		if (!aMsgHdrs.length)
 			return;
 
-		const { strftime } = ChromeUtils.import("chrome://messagearchiveoptions/content/strftime.js");
-
-		gFolderDisplay.hintMassMoveStarting();
+		if (this.folderDisplay) {
+			this.folderDisplay.hintMassMoveStarting();
+		}
 		for (let i = 0; i < aMsgHdrs.length; i++) {
 			let msgHdr = aMsgHdrs[i];
 
@@ -57,6 +57,7 @@ var messagearchiveoptions = {
 
 			// Convert date to JS date object.
 			let msgDate = new Date(msgHdr.date / 1000);
+
 			// let msgYear = msgDate.getFullYear().toString();
 			// let monthFolderName = msgYear + "-" + (msgDate.getMonth() + 1).toString().padStart(2, "0");
 
@@ -67,9 +68,8 @@ var messagearchiveoptions = {
 			let archiveGranularity;
 			let archiveKeepFolderStructure;
 
-			let identity = getIdentityForHeader(msgHdr);
-
-			if (!identity || FeedMessageHandler.isFeedFolder(msgHdr.folder)) {
+			let identity = MailUtils.getIdentityForHeader(msgHdr);
+			if (!identity || msgHdr.folder.server.type == "rss") {
 				// If no identity, or a server (RSS) which doesn't have an identity
 				// and doesn't want the default unrelated identity value, figure
 				// this out based on the default identity prefs.
@@ -126,6 +126,7 @@ var messagearchiveoptions = {
 		// Now we launch the code iterating over all message copies, one in turn.
 		this.processNextBatch();
 	},
+
 };
 
 // cleidigh - use nsIPrefBranch for TB 60+
