@@ -2,7 +2,7 @@
 
 ## Versions
 
-5.0.3	- Update for TB68/New Locales - April 15, 2019
+5.1.0	- Update for TB68/New Locales - April 18, 2019
 		- Updated against TB68-Beta
 		- Continues to work with TB60
 		- Improved UI

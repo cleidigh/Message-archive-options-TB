@@ -4,7 +4,7 @@
 	"description": "__MSG_extensionDescription__",
 	"xpi-name": "message-archive-options",
 	"version": "5.1.0",
-	"author": "eviljeff, Christopher Leidigh",
+	"author": "eviljeff",
 	"developer": {
 		"name": "eviljeff, Christopher Leidigh"
 	},
