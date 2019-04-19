@@ -5,6 +5,9 @@
 	"xpi-name": "message-archive-options",
 	"version": "5.1.0",
 	"author": "eviljeff, Christopher Leidigh",
+	"developer": {
+		"name": "eviljeff, Christopher Leidigh"
+	},
 	"applications": {
 		"gecko": {
 			"id": "messagearchiveoptions@eviljeff.com"
