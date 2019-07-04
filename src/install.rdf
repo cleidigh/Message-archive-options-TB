@@ -18,39 +18,13 @@
         <em:maxVersion>68.*</em:maxVersion>
       </Description>
     </em:targetApplication>
+
     <!-- German -->
     <em:localized>
       <Description>
         <em:locale>de</em:locale>
         <em:name>Nachrichtenarchivierungsoptionen</em:name>
         <em:description>Vollständige Anpassung des Datumsformats der Archivordner, die von Thunderbirds Archivnachrichtenfunktion erstellt wurden</em:description>
-      </Description>
-    </em:localized>
-    
-    <!-- Spanish (Spain) -->
-    <em:localized>
-      <Description>
-        <em:locale>es-ES</em:locale>
-        <em:name>Opciones de Archivo de Mensajes</em:name>
-        <em:description>Personalización completa del formato de fecha de las carpetas de archivo creadas por la función de Mensaje de Archivo de Thunderbird</em:description>
-      </Description>
-    </em:localized>
-
-    <!-- Italian -->
-    <em:localized>
-      <Description>
-        <em:locale>it</em:locale>
-        <em:name>Opzioni Archivio Messaggi</em:name>
-        <em:description>Completa personalizzazione del formato della data delle cartelle di archivio create dalla funzione di messaggio di archivio di Thunderbird</em:description>
-      </Description>
-    </em:localized>
-     
-    <!-- French -->
-    <em:localized>
-      <Description>
-        <em:locale>fr</em:locale>
-        <em:name>Message Archive Options</em:name>
-        <em:description>Personnalisation complète du format de date des dossiers d’archive créés par la fonction Archive Message de Thunderbird</em:description>
       </Description>
     </em:localized>
     
@@ -63,14 +37,41 @@
       </Description>
     </em:localized>
     
+    <!-- Spanish (Spain) -->
+    <em:localized>
+      <Description>
+        <em:locale>es-ES</em:locale>
+        <em:name>Opciones de Archivo de Mensajes</em:name>
+        <em:description>Personalización completa del formato de fecha de las carpetas de archivo creadas por la función de Mensaje de Archivo de Thunderbird</em:description>
+      </Description>
+    </em:localized>
+
+    <!-- French -->
+    <em:localized>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>Message Archive Options</em:name>
+        <em:description>Personnalisation complète du format de date des dossiers d’archive créés par la fonction Archive Message de Thunderbird</em:description>
+      </Description>
+    </em:localized>
+    
     <!-- Hungarian -->
     <em:localized>
       <Description>
         <em:locale>hu</em:locale>
-        <em:name>Üzenetarchívum Beállításai</em:name>
+        <em:name>Üzenetarchívum beállításai</em:name>
         <em:description>A Thunderbird Archív üzenet funkciója által létrehozott archív mappák dátumformátumának teljes testreszabása</em:description>
       </Description>
     </em:localized>
     
+    <!-- Italian -->
+    <em:localized>
+      <Description>
+        <em:locale>it</em:locale>
+        <em:name>Opzioni Archivio Messaggi</em:name>
+        <em:description>Completa personalizzazione del formato della data delle cartelle di archivio create dalla funzione di messaggio di archivio di Thunderbird</em:description>
+      </Description>
+    </em:localized>
+     
   </Description>
 </RDF>
